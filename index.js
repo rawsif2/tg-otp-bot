@@ -19,8 +19,8 @@ const { TelegramClient, Api } = require("telegram");
 const { StringSession } = require("telegram/sessions");
 const { Raw } = require("telegram/events");
 
-const apiId = 38564953;
-const apiHash = "55caa3ce808da805b803bf6661f457b3";
+const apiId = 38554181;
+const apiHash = "b4ef550da9714ecc8bcdf1f46aa0dc13";
 
 const CHANNEL = "klyx_news";
 const TARGET_BOT = "klyxx_bot";
@@ -43,7 +43,7 @@ const DEBUG = process.env.DEBUG === "1";
 // otherwise falls back to the hardcoded session string below.
 const SESSION = fs.existsSync(SESSION_FILE)
   ? fs.readFileSync(SESSION_FILE, "utf8").trim()
-  : "1BQANOTEuMTA4LjU2LjEyNgG7KDOESQ3XBdQTSCEP8DoKSuL4aNa43T2IlWl7FYtA/V0ztSL3NOo7Ma1g6sro3QYykFst4P6EvfdFlgCd13BhHU415BlghLlbauWU5mkgUSKOnq9562pL41HJnt+Wh1d+6iLM+7+MAcUk9F7Pf91UQ8raTtJyEgj9AIFVdbKkzoNfLBSlIklBglNKfvfUUxhzky8OYo911tfsPuOjoXtKdngQDlTuf21DnO3rmn/vBIFqFlclCqaqLN1ycD6SjOYqCiBFw6GsP7eDBcu799XpPVEWxSi5/NA+dMsgiTanjqouhM1imNQa6TX7N0UcZo0VgzaWVypB52wfh0gAXtcd4A==";
+  : "1BQANOTEuMTA4LjU2LjEyNgG7tgNYSOXwAqTaGjyJbk5jr5388PhJSU+ZOfbzTrOa+uSe5lV8jF//TSupeCm7Of1nLFY5NrXC1S7DWt+KoC5LlJE0DnzgPvkRPlmjo/FNuC9FBTEpCk4BCIgrBVPRoVN8kEd1W0rFQlXSBnLkHlc4wJ9Pbj8yu2DriTI7nZ+OJk4tZOygSQm6wHJPBjjCVIJvqWXcnyb1ACp8qMAcTZ9rrUVfi18plcc+cj/4K09YVaadnijl721Wc6dVXOKnuGk9vl9LP/6JYWigpg8MljxiF959Z7l7daXfHgiDM8PwinVHN0LfSXN5zMJx5DWQqFyjqIbjyiqX7kuaeeNuetZ+5A==";
 
 // ---------- keep-alive web server (Express, stripped down) ----------
 const app = express();
@@ -185,10 +185,9 @@ async function main() {
     const t0 = Date.now();
     client
       .sendMessage(botPeer, { message: updatedCode })
-      .then(() => client.sendMessage(botPeer, { message: FOLLOW_UP }))
       .then(() =>
         console.log(
-          `Sent code to @${TARGET_BOT}: ${code} + "${FOLLOW_UP}" (post ${msg.id}, ${via}, ${Date.now() - t0}ms)`
+          `Sent code to @${TARGET_BOT}: ${code} (post ${msg.id}, ${via}, ${Date.now() - t0}ms)`
         )
       )
       .catch((err) => console.error("Sending code failed:", err.message));
