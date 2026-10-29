@@ -32,7 +32,7 @@ const TEST_REPLY = "Bot is working";
 // Text sent right after a code, so the bot is ready for the next one.
 const FOLLOW_UP = "🎟 Enter promo";
 
-const POLL_MS = 1000; // safety-net poll of the main channel; 0 turns it off
+const POLL_MS = 0; // safety-net poll of the main channel; 0 turns it off
 const MAX_EDIT_AGE_S = 300; // edits of posts older than this are ignored
 
 const SESSION_FILE = "telegram-session.txt";
